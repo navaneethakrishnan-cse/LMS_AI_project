@@ -7,13 +7,6 @@ services:
     ports:
       - "5000:5000"
 
-  java-service:
-    image: openjdk:17
-    build:
-      context: ./java-service
-    command: java -jar chatbot.jar
-    ports:
-      - "8080:8080"
 
   frontend:
     image: nginx:latest
