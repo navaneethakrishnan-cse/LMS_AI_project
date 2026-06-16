@@ -3,23 +3,13 @@ services:
     image: python:3.11
     build:
       context: ./backend
-    command: python app.py
+    command: uvicorn main:app --host 0.0.0.0 --port 5000
     ports:
-      - 5000
-    environment:
-      FLASK_ENV: production
-
-  java-service:
-    image: openjdk:17
-    build:
-      context: ./java-service
-    command: java -jar chatbot.jar
-    ports:
-      - 8080
+      - "5000:5000"
 
   frontend:
     image: nginx:latest
     build:
       context: ./frontend
     ports:
-      - 80
+      - "80:80"
